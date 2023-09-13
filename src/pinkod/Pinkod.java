@@ -1,10 +1,15 @@
 package pinkod;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class Pinkod {
     static int jelszo;
     static int bekertjelszo;
+    static Integer szam[];
+    
     public static void main(String[] args) {
         feladat();
     }
@@ -15,7 +20,13 @@ public class Pinkod {
         jelszoElker(beker); 
     }
 
-    private static int jelszoMegad(Scanner beker) { 
+    private static int jelszoMegad(Scanner beker) {
+        Integer[] Szamok = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        List<Integer> KeveroLista = Arrays.asList(Szamok);
+        Collections.shuffle(KeveroLista);
+        KeveroLista.toArray(Szamok);
+        System.out.println(Arrays.toString(Szamok));
+        
         System.out.print("kód megadása: ");
         jelszo = beker.nextInt();
         String jelszoEllenorzes = Integer.toString(jelszo);
@@ -25,6 +36,11 @@ public class Pinkod {
             jelszo = beker.nextInt();
         }
         System.out.println("pin elmentve!");
+        Collections.shuffle(KeveroLista);
+        KeveroLista.toArray(Szamok);
+        System.out.println(Arrays.toString(Szamok));
+        szam = Szamok;
+        
         return jelszo;
     }
 
